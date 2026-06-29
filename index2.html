@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabi Costa VIP | Área Privada Exclusiva</title>
+    <!-- Tailwind CSS para Estilização de Elite -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        premium: {
+                            gold: '#FFD700',
+                            goldLight: '#FFF9D0',
+                            dark: '#030303',
+                            card: '#0a0a0a',
+                            accent: '#ff0055', // Rosa choque hiper sedutor
+                            accentDark: '#b3003b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;850;900&display=swap" rel="stylesheet">
+    <style>
+        .pink-glow {
+            box-shadow: 0 0 35px 5px rgba(255, 0, 85, 0.45);
+        }
+        .gold-glow {
+            box-shadow: 0 0 30px 4px rgba(255, 215, 0, 0.4);
+        }
+        /* Efeito de pulsar no botão de compra imediata */
+        @keyframes pulse-fast {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+        .pulse-btn {
+            animation: pulse-fast 1.2s infinite ease-in-out;
+        }
+        /* Ocultar barra de rolagem */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-premium-dark text-zinc-100 font-sans antialiased overflow-x-hidden selection:bg-premium-accent selection:text-white">
+
+    <!-- BARRA DE PRESSÃO PSICOLÓGICA MÁXIMA -->
+    <div class="bg-gradient-to-r from-red-600 via-premium-accent to-red-600 text-white text-center py-2 px-4 text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 sticky top-0 z-50 shadow-lg">
+        <span class="inline-block w-2.5 h-2.5 bg-white rounded-full animate-ping"></span>
+        <span>LINK PRIVADO TEMPORÁRIO. ESTA OFERTA EXPIRA EM: <span id="timer" class="font-mono text-sm bg-black/40 px-2 py-0.5 rounded ml-1">05:00</span></span>
+    </div>
+
+    <!-- CONTAINER PRINCIPAL MOBILE-FIRST (Estilo Aplicativo VIP) -->
+    <main class="max-w-md mx-auto px-4 pt-4 pb-28 space-y-6">
+
+        <!-- HEADER DE CREDIBILIDADE INSTANTÂNEA -->
+        <div class="flex items-center justify-between bg-zinc-950 p-4 rounded-3xl border border-zinc-900 shadow-xl">
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <div class="w-14 h-14 rounded-full p-[2.5px] bg-gradient-to-tr from-premium-accent to-premium-gold">
+                        <img src="face.png?auto=format&fit=crop&q=80&w=150" alt="Gabi Costa" class="w-full h-full object-cover rounded-full border-2 border-black">
+                    </div>
+                    <span class="absolute bottom-0 right-0 w-4 h-4 bg-emerald-500 rounded-full border-2 border-zinc-950 flex items-center justify-center text-[8px] text-white font-bold">✓</span>
+                </div>
+                <div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-sm font-black tracking-wide text-zinc-100 uppercase">Gabi Costa</span>
+                        <span class="bg-premium-accent text-[9px] text-white font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider">VIP</span>
+                    </div>
+                    <p class="text-[10px] text-zinc-500 font-bold font-mono">🔥 147 homens online neste momento</p>
+                </div>
+            </div>
+            <div class="text-right">
+                <span class="block text-[9px] text-zinc-500 uppercase font-black tracking-wider">Servidor</span>
+                <span class="text-[10px] text-emerald-400 font-bold flex items-center justify-end gap-1">
+                    <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span> Seguro/Kirvano
+                </span>
+            </div>
+        </div>
+
+        <!-- REVELADOR INTERATIVO (Gatilho Biológico da Curiosidade) -->
+        <div class="relative bg-zinc-950 rounded-3xl overflow-hidden border border-zinc-900 shadow-2xl">
+            <div class="p-4 bg-zinc-900/40 border-b border-zinc-900 text-center">
+                <span class="text-[10px] font-black text-premium-gold uppercase tracking-widest block">👀 CONTROLE DE PREVISUALIZAÇÃO EXCLUSIVA</span>
+                <p class="text-[11px] text-zinc-400 mt-0.5">Arraste o slider abaixo para testar a nitidez do ensaio.</p>
+            </div>
+            
+            <div class="relative aspect-[4/5] w-full">
+                <!-- Imagem sensual de biquíni / iate representativa com controle de desfoque -->
+                <img id="interactive-teaser" src="visual.png?auto=format&fit=crop&q=80&w=600" alt="Gabi Costa VIP" class="w-full h-full object-cover" style="filter: blur(28px);">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30 z-10 pointer-events-none"></div>
+                
+                <!-- Interface de Trava Automática quando ele tenta ver tudo -->
+                <div id="lock-overlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center bg-black/80 backdrop-blur-md hidden transition duration-300">
+                    <div class="bg-zinc-900/95 border border-premium-accent/60 p-5 rounded-2xl max-w-[85%] space-y-3 shadow-2xl">
+                        <span class="text-3xl">🔞</span>
+                        <h4 class="text-xs font-black text-white uppercase tracking-widest">ACESSO LIMITADO</h4>
+                        <p class="text-[10px] text-zinc-400 leading-relaxed">Você atingiu a cota máxima de pré-visualização gratuita. Desbloqueie o material completo sem censura ou cortes em segundos no botão abaixo.</p>
+                        <button onclick="scrollToCheckout()" class="w-full bg-premium-accent text-white font-black py-2.5 px-4 rounded-xl text-[10px] uppercase tracking-wider shadow-lg">
+                            REVELAR TODO O ÁLBUM AGORA 🔓
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controle deslizante interativo -->
+            <div class="p-4 bg-zinc-950 space-y-2 border-t border-zinc-900">
+                <div class="flex justify-between text-[10px] font-bold text-zinc-400 uppercase">
+                    <span>Censurado</span>
+                    <span id="blur-level-text" class="text-premium-accent">0% Revelado</span>
+                </div>
+                <input id="blur-slider" type="range" min="0" max="100" value="0" oninput="adjustBlur(this.value)" class="w-full h-1.5 bg-zinc-850 rounded-lg appearance-none cursor-pointer accent-premium-accent">
+            </div>
+        </div>
+
+        <!-- COPY DE DESEJO ABSOLUTO (Posicionando a Diferença de Valor) -->
+        <div class="bg-zinc-950 p-5 rounded-3xl border border-zinc-900 space-y-3.5">
+            <span class="text-[10px] font-black text-premium-accent uppercase tracking-widest block">O QUE VOCÊ VAI DESBLOQUEAR HOJE:</span>
+            
+            <div class="space-y-3 text-xs leading-relaxed">
+                <div class="border-l-2 border-premium-gold pl-3 space-y-1">
+                    <strong class="text-premium-gold block uppercase text-[11px]">🚤 SESSÃO OUSADA (A Obra de Arte VIP):</strong>
+                    <p class="text-zinc-300">Este é o ensaio dos seus sonhos. Gabi Costa a bordo de um iate de luxo, explorando biquínis provocantes, closes extremos e uma intimidade artística caríssima de ser produzida. O limite absoluto de sua imaginação.</p>
+                </div>
+                <div class="border-l-2 border-zinc-700 pl-3 space-y-1">
+                    <strong class="text-zinc-300 block uppercase text-[11px]">🔞 SESSÃO ERÓTICA (O Desejo Caseiro):</strong>
+                    <p class="text-zinc-400">Pura cumplicidade. A famosa sessão do shorts jeans branco caindo na cozinha e poses descontraídas de lingerie. Parece um registro real que ela preparou no celular e enviou direto no seu privado.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAST REDIRECT CHECKOUT: SELEÇÃO E COMPRA EM 1 CLIQUE -->
+        <div id="checkout-area" class="bg-zinc-900 rounded-3xl border-2 border-premium-gold p-6 space-y-5 shadow-2xl relative gold-glow">
+            
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-premium-gold via-yellow-400 to-premium-gold text-zinc-950 font-black text-[9px] px-6 py-1 rounded-full uppercase tracking-widest whitespace-nowrap shadow-md">
+                ⚡ PAGAMENTO IMEDIATO E SEGURO VIA KIRVANO
+            </div>
+
+            <!-- PASSO 1: SELECIONE O CONTEÚDO DESEJADO -->
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center gap-1.5">
+                    <span class="w-5.5 h-5.5 bg-premium-gold text-zinc-950 font-black rounded-full flex items-center justify-center text-xs">1</span>
+                    <h3 class="text-xs uppercase font-black tracking-wider text-zinc-300">Selecione o Conteúdo VIP:</h3>
+                </div>
+
+                <div class="space-y-2.5">
+                    <!-- Opção 1: Combo Total (Destaque Máximo de Conversão) -->
+                    <label id="label-combo" class="relative block bg-zinc-950 rounded-2xl p-4 border-2 border-premium-accent cursor-pointer transition">
+                        <input type="radio" name="pack-selection" value="combo" checked onclick="selectPack('combo', 99.90, 'Combo Gabi Total 👑', 'https://pay.kirvano.com/9172f526-dd36-4cc1-8fdf-4202d03eea8a')" class="hidden">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full border-2 border-premium-accent flex items-center justify-center p-[2px]">
+                                    <div id="dot-combo" class="w-full h-full rounded-full bg-premium-accent"></div>
+                                </div>
+                                <div>
+                                    <span class="block text-xs font-black text-white uppercase flex items-center gap-1.5">
+                                        Combo Gabi Total <span class="bg-premium-accent text-[8px] text-white font-bold px-1.5 rounded-full animate-pulse">Economia Máxima</span>
+                                    </span>
+                                    <span class="block text-[10px] text-zinc-400 mt-0.5">30 Fotos (Erótico + Ousado) + Vídeo Secreto</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="block text-[9px] text-zinc-500 line-through">R$ 109,80</span>
+                                <span class="text-sm font-black text-premium-gold">R$ 99,90</span>
+                            </div>
+                        </div>
+                    </label>
+
+                    <!-- Opção 2: Ensaio Ousado (Sessão Premium Principal) -->
+                    <label id="label-ousado" class="relative block bg-zinc-950 rounded-2xl p-4 border border-zinc-850 cursor-pointer transition">
+                        <input type="radio" name="pack-selection" value="ousado" onclick="selectPack('ousado', 79.90, 'Sessão Ousada VIP 🛥️', 'https://pay.kirvano.com/acfc061f-6f2e-4c02-93b7-43dc7d67bf7b')" class="hidden">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full border-2 border-zinc-850 flex items-center justify-center p-[2px]">
+                                    <div id="dot-ousado" class="w-full h-full rounded-full bg-transparent"></div>
+                                </div>
+                                <div>
+                                    <span class="block text-xs font-black text-white uppercase">Sessão Ousada (Premium) 🛥️</span>
+                                    <span class="block text-[10px] text-zinc-400 mt-0.5">15 Fotos. Alta Produção no Iate e biquíni premium</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-sm font-black text-zinc-200">R$ 79,90</span>
+                            </div>
+                        </div>
+                    </label>
+
+                    <!-- Opção 3: Ensaio Erótico -->
+                    <label id="label-erotico" class="relative block bg-zinc-950 rounded-2xl p-4 border border-zinc-850 cursor-pointer transition">
+                        <input type="radio" name="pack-selection" value="erotico" onclick="selectPack('erotico', 29.90, 'Sessão Erótica VIP 🔞', 'https://pay.kirvano.com/2f5ba010-c82a-4054-8a5c-17ffbe5c4bd8')" class="hidden">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full border-2 border-zinc-850 flex items-center justify-center p-[2px]">
+                                    <div id="dot-erotico" class="w-full h-full rounded-full bg-transparent"></div>
+                                </div>
+                                <div>
+                                    <span class="block text-xs font-black text-white uppercase">Sessão Erótica 🔞</span>
+                                    <span class="block text-[10px] text-zinc-400 mt-0.5">15 Fotos. Shorts branco de cozinha e pole dance</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-sm font-black text-zinc-200">R$ 29,90</span>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- PASSO 2: REDIRECIONAMENTO E LIBERAÇÃO DIRETA -->
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center gap-1.5">
+                    <span class="w-5.5 h-5.5 bg-premium-gold text-zinc-950 font-black rounded-full flex items-center justify-center text-xs">2</span>
+                    <h3 class="text-xs uppercase font-black tracking-wider text-zinc-300">Finalizar com segurança:</h3>
+                </div>
+
+                <!-- Botão Ativo de Compra Oficial Kirvano -->
+                <div id="action-wrapper">
+                    <button onclick="redirectToKirvano()" class="pulse-btn w-full bg-premium-accent hover:bg-pink-600 text-white font-black py-4 px-6 rounded-2xl transition shadow-lg tracking-widest text-xs uppercase pink-glow">
+                        REVELAR CONTEÚDO AGORA 🔓
+                    </button>
+                </div>
+
+                <!-- Carregamento Seguro Kirvano -->
+                <div id="action-loading" class="hidden text-center py-4 space-y-2">
+                    <div class="inline-block w-6 h-6 border-3 border-premium-gold border-t-transparent rounded-full animate-spin"></div>
+                    <p class="text-[10px] text-zinc-400 font-bold uppercase tracking-wider">Criando seu acesso privado de download...</p>
+                </div>
+            </div>
+
+            <!-- GARANTIA DE PRIVACIDADE EXTREMA E SUPORTE -->
+            <div class="pt-3 border-t border-zinc-800/80 flex items-center justify-between text-[10px] text-zinc-500 font-semibold">
+                <span class="flex items-center gap-1">🔒 Link Protegido por Kirvano</span>
+                <span class="flex items-center gap-1">🕵️ Anonimato Garantido</span>
+            </div>
+        </div>
+
+        <!-- QUEBRA DE OBJEÇÃO: SIMULADOR DE FATURA DISCRETA -->
+        <div class="bg-zinc-950 p-4.5 rounded-3xl border border-zinc-900 space-y-4">
+            <span class="text-[10px] font-black text-premium-gold uppercase tracking-widest block text-center">🛡️ SUA PRIVACIDADE É NOSSA ABSOLUTA PRIORIDADE</span>
+            
+            <p class="text-[11px] text-zinc-400 leading-relaxed text-center">
+                Preocupado com quem pode ver a movimentação da conta? A Kirvano assegura sigilo absoluto. No seu extrato bancário não aparecerá nenhuma referência a conteúdos adultos ou à Gabi Costa.
+            </p>
+
+            <!-- Exemplo Visual da Fatura -->
+            <div class="bg-zinc-900 p-3 rounded-2xl border border-zinc-800 space-y-2">
+                <p class="text-[10px] uppercase font-bold text-zinc-500 tracking-wider">Como aparecerá no seu extrato de compras:</p>
+                <div class="flex items-center justify-between bg-black/40 p-2.5 rounded-xl text-xs font-mono text-zinc-300">
+                    <span class="text-zinc-500">KIRVANO*CURSO</span>
+                    <span id="fatura-valor" class="text-emerald-400 font-bold">-R$ 99,90</span>
+                </div>
+                <p class="text-[9px] text-zinc-500 text-center italic">Privacidade total garantida de ponta a ponta.</p>
+            </div>
+        </div>
+
+        <!-- PRÉVIA DOS ÁLBUNS CENSURADOS (Para alimentar o apetite visual) -->
+        <div class="space-y-3">
+            <p class="text-[10px] uppercase tracking-wider text-zinc-500 font-bold">O que está lhe aguardando nos álbuns premium:</p>
+            
+            <div class="grid grid-cols-2 gap-3">
+                <!-- Teaser 1 -->
+                <div class="relative bg-zinc-950 rounded-2xl overflow-hidden aspect-[4/5] border border-zinc-900">
+                    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover blur-[22px]">
+                    <div class="absolute inset-0 bg-black/55 flex items-center justify-center p-2 text-center">
+                        <span class="text-[9px] text-premium-gold font-black uppercase tracking-wider block">PREMIUM OUSADA #03</span>
+                    </div>
+                </div>
+                <!-- Teaser 2 -->
+                <div class="relative bg-zinc-950 rounded-2xl overflow-hidden aspect-[4/5] border border-zinc-900">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover blur-[22px]">
+                    <div class="absolute inset-0 bg-black/55 flex items-center justify-center p-2 text-center">
+                        <span class="text-[9px] text-premium-gold font-black uppercase tracking-wider block">PREMIUM ERÓTICA #14</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROCESSO DE ACESSO KIRVANO EM 3 PASSOS RÁPIDOS -->
+        <div class="bg-zinc-950 p-4.5 rounded-3xl border border-zinc-900 text-center space-y-4">
+            <p class="text-[10px] uppercase tracking-widest text-zinc-500 font-black">Como você acessa em menos de 1 minuto:</p>
+            
+            <div class="grid grid-cols-3 gap-2 text-center text-[10px] text-zinc-400">
+                <div class="space-y-1">
+                    <span class="text-xl block">1️⃣</span>
+                    <p class="font-bold text-zinc-300">Escolha & Toque</p>
+                    <p class="text-[9px] text-zinc-500 leading-tight">Escolha o seu pacote VIP aqui e vá direto para a Kirvano.</p>
+                </div>
+                <div class="space-y-1">
+                    <span class="text-xl block">2️⃣</span>
+                    <p class="font-bold text-zinc-300">Finalize o Pix</p>
+                    <p class="text-[9px] text-zinc-500 leading-tight">Aprovação imediata e sem atrito pela plataforma.</p>
+                </div>
+                <div class="space-y-1">
+                    <span class="text-xl block">3️⃣</span>
+                    <p class="font-bold text-zinc-300">Acesse e Baixe</p>
+                    <p class="text-[9px] text-zinc-500 leading-tight">O link de download premium do álbum chega na hora!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FEEDBACK VIP (Prova social ultra direcionada) -->
+        <div class="space-y-2.5">
+            <p class="text-[10px] uppercase tracking-wider text-zinc-500 font-bold">Relatos dos membros que já compraram:</p>
+
+            <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-900 space-y-1">
+                <div class="flex items-center justify-between text-[10px] font-bold text-zinc-400">
+                    <span>Gustavo_Lira</span>
+                    <span class="text-premium-gold">★★★★★</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 font-light">"A Sessão Ousada de biquíni no barco ficou simplesmente inacreditável. O olhar dela nessas fotos derruba qualquer um. Parabéns, Gabi!"</p>
+            </div>
+
+            <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-900 space-y-1">
+                <div class="flex items-center justify-between text-[10px] font-bold text-zinc-400">
+                    <span>Rodrigo_Mendes</span>
+                    <span class="text-premium-gold">★★★★★</span>
+                </div>
+                <p class="text-[11px] text-zinc-300 font-light">"Liberou na hora pelo link que chegou no email. O combo vale demais a pena, a sessão do shorts branco na cozinha é espetacular."</p>
+            </div>
+        </div>
+
+        <!-- NOTA LEGAL -->
+        <div class="bg-zinc-950/55 p-4 rounded-2xl border border-zinc-900 text-center space-y-3">
+            <p class="text-[9px] uppercase tracking-widest text-zinc-500 font-bold">AVISO LEGAL & DIREITOS AUTORAIS</p>
+            <p class="text-[10px] text-zinc-600 leading-relaxed">
+                Todas as fotos e vídeos disponibilizados nesta plataforma de vendas VIP são de propriedade exclusiva de Gabi Costa. O compartilhamento, vazamento ou distribuição ilegal resultará em responsabilização civil e criminal sob rastreamento inteligente de IP.
+            </p>
+        </div>
+
+        <!-- FOOTER DISCRETO -->
+        <footer class="text-center space-y-1.5 pt-4 text-[10px] text-zinc-600">
+            <p>&copy; 2026 Gabi Costa VIP. Todos os direitos reservados. +18 Anos.</p>
+            <p class="text-[9px]">Página de alta performance integrada de forma segura com Kirvano.</p>
+        </footer>
+
+    </main>
+
+    <!-- FLOATING WHATSAPP DE CONVERSÃO EXTRA -->
+    <div class="fixed bottom-4 right-4 z-40">
+        <a href="#" onclick="showQuickSupport()" class="flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 rounded-full text-xs shadow-xl active:scale-95 transition">
+            <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.324 5.328 0 11.859 0c3.161.001 6.132 1.233 8.368 3.472 2.235 2.24 3.466 5.211 3.466 8.377-.003 6.536-5.328 11.86-11.859 11.86-2.004-.001-3.973-.51-5.716-1.48L0 24zm6.59-4.846c1.6.95 3.198 1.451 4.782 1.452 5.43 0 9.844-4.414 9.847-9.847.002-2.63-1.023-5.101-2.883-6.963C16.48 1.93 14.015.905 11.86.905 6.429.905 2.013 5.32 2.01 10.75c-.001 1.679.46 3.3 1.332 4.693l-.991 3.613 3.706-.962z"/>
+            </svg>
+            Dúvidas na compra?
+        </a>
+    </div>
+
+    <!-- MODAL DE AJUDA -->
+    <div id="support-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-zinc-900 rounded-3xl border border-zinc-800 max-w-xs w-full p-6 text-center space-y-4">
+            <span class="text-2xl">📱</span>
+            <h4 class="text-sm font-black text-white uppercase tracking-wider">Suporte Imediato VIP</h4>
+            <p class="text-xs text-zinc-400 font-light leading-relaxed">Não recebeu o e-mail da Kirvano com o seu link após o pagamento ou está com dificuldade para finalizar? Fale conosco no WhatsApp para suporte manual.</p>
+            <a href="https://wa.me/5500000000000" target="_blank" class="block w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-wider">
+                Chamar Equipe de Suporte
+            </a>
+            <button onclick="closeQuickSupport()" class="text-xs text-zinc-500 hover:text-zinc-300 block mx-auto pt-2">Fechar Janela</button>
+        </div>
+    </div>
+
+    <!-- TOAST POPUP EM TEMPO REAL (Gatilho da competição masculina e pressa) -->
+    <div id="toast-notif" class="fixed bottom-4 left-4 right-4 z-40 bg-zinc-950/95 border border-premium-accent/40 p-3.5 rounded-2xl flex items-center gap-3 shadow-2xl transition-all duration-500 transform translate-y-28 opacity-0 max-w-sm mx-auto">
+        <div class="w-8 h-8 rounded-full bg-premium-accent/10 text-premium-accent flex items-center justify-center text-base shrink-0 font-bold border border-premium-accent/20">
+            🔥
+        </div>
+        <div>
+            <p id="toast-text" class="text-[11px] font-bold text-zinc-200"></p>
+            <p class="text-[9px] text-zinc-500 font-medium">Link de download exclusivo entregue via Kirvano</p>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE EXECUÇÃO E CONTROLE -->
+    <script>
+        // URLs e dados dos pacotes oficiais Kirvano
+        let selectedPack = {
+            id: 'combo',
+            price: 99.90,
+            name: 'Combo Gabi Total 👑',
+            url: 'https://pay.kirvano.com/9172f526-dd36-4cc1-8fdf-4202d03eea8a'
+        };
+
+        // 1. Cronômetro dinâmico de Urgência
+        let timeInSeconds = 300; // 5 minutos
+        function startTimer() {
+            const timerElement = document.getElementById('timer');
+            setInterval(() => {
+                let minutes = Math.floor(timeInSeconds / 60);
+                let seconds = timeInSeconds % 60;
+
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                timerElement.innerText = `${minutes}:${seconds}`;
+
+                if (timeInSeconds <= 0) {
+                    timeInSeconds = 300; // Loop infinito do senso de urgência
+                } else {
+                    timeInSeconds--;
+                }
+            }, 1000);
+        }
+
+        // 2. Revelador de Censura Interativo (Efeito de Blur dinâmico via range slider)
+function adjustBlur(value) {
+    const image = document.getElementById('interactive-teaser');
+    const text = document.getElementById('blur-level-text');
+    const lockOverlay = document.getElementById('lock-overlay');
+
+    let blurValue = 28 - (value * 0.28);
+    image.style.filter = `blur(${blurValue}px)`;
+
+    text.innerText = `${value}% Revelado`;
+
+    // 🔴 ALTERE PARA 85: (A trava dispara aqui)
+    if (value >= 85) { 
+        lockOverlay.classList.remove('hidden');
+        
+        // 🔴 ALTERE PARA 80: (O slider recua um pouquinho para manter o bloqueio travado)
+        document.getElementById('blur-slider').value = 85; 
+        image.style.filter = `blur(${28 - (85 * 0.28)}px)`;
+        text.innerText = "85% Revelado";
+    }
+}
+
+        // 3. Seleção instantânea de pacotes
+        function selectPack(id, price, name, url) {
+            selectedPack = { id, price, name, url };
+            
+            ['combo', 'erotico', 'ousado'].forEach(p => {
+                const label = document.getElementById(`label-${p}`);
+                const dot = document.getElementById(`dot-${p}`);
+                
+                label.className = "relative block bg-zinc-950 rounded-2xl p-4 border border-zinc-850 cursor-pointer transition";
+                dot.className = "w-full h-full rounded-full bg-transparent";
+            });
+
+            const activeLabel = document.getElementById(`label-${id}`);
+            const activeDot = document.getElementById(`dot-${id}`);
+            
+            activeLabel.className = "relative block bg-zinc-950 rounded-2xl p-4 border-2 border-premium-accent cursor-pointer transition";
+            activeDot.className = "w-full h-full rounded-full bg-premium-accent";
+
+            // Altera valor do simulador de fatura discreta
+            document.getElementById('fatura-valor').innerText = `-R$ ${price.toFixed(2).replace('.', ',')}`;
+        }
+
+        // Rola suavemente até o checkout ao clicar em desbloquear no slider
+        function scrollToCheckout() {
+            document.getElementById('lock-overlay').classList.add('hidden');
+            const checkoutArea = document.getElementById('checkout-area');
+            checkoutArea.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 4. Redirecionamento 100% limpo e sem fricção para a Kirvano
+        function redirectToKirvano() {
+            const actionWrapper = document.getElementById('action-wrapper');
+            const actionLoading = document.getElementById('action-loading');
+
+            actionWrapper.classList.add('hidden');
+            actionLoading.classList.remove('hidden');
+
+            setTimeout(() => {
+                // Vai direto para o checkout oficial selecionado sem requisição de email local
+                window.location.href = selectedPack.url;
+            }, 600);
+        }
+
+        // Modais de ajuda
+        function showQuickSupport() {
+            document.getElementById('support-modal').classList.remove('hidden');
+        }
+        function closeQuickSupport() {
+            document.getElementById('support-modal').classList.add('hidden');
+        }
+
+        // 5. Sistema de Notificações de Vendas em Tempo Real (Alimenta a prova social)
+        const buyers = ["Felipe S.", "Bruno R.", "Gustavo P.", "Marcelo O.", "Carlos Alberto", "Renato M.", "Thiago de O.", "Alexandre K."];
+        const packages = ["Combo Gabi Total 👑", "Sessão Ousada Premium 🛥️", "Combo Gabi Total 👑", "Sessão Erótica VIP 🔞"];
+
+        function triggerSocialNotification() {
+            const toast = document.getElementById('toast-notif');
+            const text = document.getElementById('toast-text');
+
+            const randomName = buyers[Math.floor(Math.random() * buyers.length)];
+            const randomPack = packages[Math.floor(Math.random() * packages.length)];
+
+            text.innerHTML = `<strong>${randomName}</strong> acabou de liberar: ${randomPack}`;
+
+            toast.classList.remove('translate-y-28', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-28', 'opacity-0');
+            }, 4500);
+        }
+
+        window.onload = function() {
+            startTimer();
+            setTimeout(triggerSocialNotification, 2000);
+            setInterval(triggerSocialNotification, 15000);
+        };
+    </script>
+</body>
+</html>
