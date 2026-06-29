@@ -347,27 +347,27 @@
     </main>
 
     <!-- FLOATING WHATSAPP DE CONVERSÃO EXTRA -->
-    <div class="fixed bottom-4 right-4 z-40">
-        <a href="#" onclick="showQuickSupport()" class="flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 rounded-full text-xs shadow-xl active:scale-95 transition">
-            <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.324 5.328 0 11.859 0c3.161.001 6.132 1.233 8.368 3.472 2.235 2.24 3.466 5.211 3.466 8.377-.003 6.536-5.328 11.86-11.859 11.86-2.004-.001-3.973-.51-5.716-1.48L0 24zm6.59-4.846c1.6.95 3.198 1.451 4.782 1.452 5.43 0 9.844-4.414 9.847-9.847.002-2.63-1.023-5.101-2.883-6.963C16.48 1.93 14.015.905 11.86.905 6.429.905 2.013 5.32 2.01 10.75c-.001 1.679.46 3.3 1.332 4.693l-.991 3.613 3.706-.962z"/>
-            </svg>
-            Dúvidas na compra?
-        </a>
-    </div>
+   # <div class="fixed bottom-4 right-4 z-40">
+   #     <a href="#" onclick="showQuickSupport()" class="flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 rounded-full text-xs shadow-xl active:scale-95 transition">
+   #         <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+   #             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.324 5.328 0 11.859 0c3.161.001 6.132 1.233 8.368 3.472 2.235 2.24 3.466 5.211 3.466 8.377-.003 6.536-5.328 11.86-11.859 11.86-2.004-.001-3.973-.51-5.716-1.48L0 24zm6.59-4.846c1.6.95 3.198 1.451 4.782 1.452 5.43 0 9.844-4.414 9.847-9.847.002-2.63-1.023-5.101-2.883-6.963C16.48 1.93 14.015.905 11.86.905 6.429.905 2.013 5.32 2.01 10.75c-.001 1.679.46 3.3 1.332 4.693l-.991 3.613 3.706-.962z"/>
+   #         </svg>
+   #         Dúvidas na compra?
+   #     </a>
+   # </div>
 
     <!-- MODAL DE AJUDA -->
-    <div id="support-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-        <div class="bg-zinc-900 rounded-3xl border border-zinc-800 max-w-xs w-full p-6 text-center space-y-4">
-            <span class="text-2xl">📱</span>
-            <h4 class="text-sm font-black text-white uppercase tracking-wider">Suporte Imediato VIP</h4>
-            <p class="text-xs text-zinc-400 font-light leading-relaxed">Não recebeu o e-mail da Kirvano com o seu link após o pagamento ou está com dificuldade para finalizar? Fale conosco no WhatsApp para suporte manual.</p>
-            <a href="https://wa.me/5500000000000" target="_blank" class="block w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-wider">
-                Chamar Equipe de Suporte
-            </a>
-            <button onclick="closeQuickSupport()" class="text-xs text-zinc-500 hover:text-zinc-300 block mx-auto pt-2">Fechar Janela</button>
-        </div>
-    </div>
+#    <div id="support-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+#        <div class="bg-zinc-900 rounded-3xl border border-zinc-800 max-w-xs w-full p-6 text-center space-y-4">
+#            <span class="text-2xl">📱</span>
+#            <h4 class="text-sm font-black text-white uppercase tracking-wider">Suporte Imediato VIP</h4>
+#            <p class="text-xs text-zinc-400 font-light leading-relaxed">Não recebeu o e-mail da Kirvano com o seu link após o pagamento ou está com dificuldade para finalizar? Fale conosco no WhatsApp para suporte manual.</p>
+#            <a href="https://wa.me/5500000000000" target="_blank" class="block w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-wider">
+#                Chamar Equipe de Suporte
+#            </a>
+#            <button onclick="closeQuickSupport()" class="text-xs text-zinc-500 hover:text-zinc-300 block mx-auto pt-2">Fechar Janela</button>
+#        </div>
+#    </div>
 
     <!-- TOAST POPUP EM TEMPO REAL (Gatilho da competição masculina e pressa) -->
     <div id="toast-notif" class="fixed bottom-4 left-4 right-4 z-40 bg-zinc-950/95 border border-premium-accent/40 p-3.5 rounded-2xl flex items-center gap-3 shadow-2xl transition-all duration-500 transform translate-y-28 opacity-0 max-w-sm mx-auto">
