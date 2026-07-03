@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/whatsapp",
+      "destination": "https://whatsapp.com/channel/0029VbDKAlv72WTwLiQJgg0R",
+      "permanent": true
+    }
+  ]
+}
