@@ -386,8 +386,9 @@
     </div>
 
     <!-- SCRIPT DE EXECUÇÃO E CONTROLE -->
+<!-- SCRIPT DE EXECUÇÃO E CONTROLE -->
     <script>
-        // Configurações iniciais do pacote promocional ativo por padrão
+        // Configurações do pacote promocional ativo por padrão
         let selectedPack = {
             id: 'promo',
             price: 19.90,
@@ -414,8 +415,11 @@
             .then(data => {
                 actionLoading.classList.add('hidden');
                 if(data.success) {
+                    // Preenche o QR code e o campo texto copia e cola na tela
                     document.getElementById('dynamic-qrcode').src = data.qr_code_base64;
                     document.getElementById('dynamic-copiacola').value = data.pix_copia_cola;
+                    
+                    // Mostra o bloco estruturado do PIX para o usuário pagar
                     pixArea.classList.remove('hidden');
                 } else {
                     alert("Erro do sistema ao criar cobrança: " + data.message);
@@ -497,7 +501,7 @@
             const activeDot = document.getElementById(`dot-${id}`);
             
             if (activeLabel) {
-                // Se for o pacote 'promo', reaplica a estilização ultra destacada (pink-glow e borda-2)
+                // Se for o pacote 'promo', reaplica a estilização ultra destacada
                 if (id === 'promo') {
                     activeLabel.className = "relative block bg-zinc-950 rounded-2xl p-5 border-2 border-premium-accent cursor-pointer transition pink-glow";
                 } else {
