@@ -174,14 +174,14 @@
                 </div>
 
                 <div class="space-y-2.5">
-                 <!-- Opção 1: Combo Gabi Total (Ajustado para começar desmarcado) -->
-<label id="label-combo" class="relative block bg-zinc-950 rounded-2xl p-4 border border-zinc-850 cursor-pointer transition">
-    <input type="radio" name="pack-selection" value="combo" onclick="selectPack('combo', 99.90, 'Combo Gabi Total 👑')" class="hidden">
-    <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-            <div class="w-5 h-5 rounded-full border-2 border-zinc-850 flex items-center justify-center p-[2px]">
-                <div id="dot-combo" class="w-full h-full rounded-full bg-transparent"></div>
-            </div>
+                    <!-- Opção 1: Combo Gabi Total -->
+                    <label id="label-combo" class="relative block bg-zinc-950 rounded-2xl p-4 border border-zinc-850 cursor-pointer transition">
+                        <input type="radio" name="pack-selection" value="combo" onclick="selectPack('combo', 99.90, 'Combo Gabi Total 👑')" class="hidden">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full border-2 border-zinc-850 flex items-center justify-center p-[2px]">
+                                    <div id="dot-combo" class="w-full h-full rounded-full bg-transparent"></div>
+                                </div>
                                 <div>
                                     <span class="block text-xs font-black text-white uppercase flex items-center gap-1.5">
                                         Combo Gabi Total <span class="bg-premium-accent text-[8px] text-white font-bold px-1.5 rounded-full animate-pulse">Economia Máxima</span>
@@ -233,35 +233,31 @@
                             </div>
                         </div>
                     </label>
-                  <!-- Opção 4: Sessão Promo Exclusiva (Novo Pack ULTRA DESTACADO) -->
-<label id="label-promo" class="relative block bg-zinc-950 rounded-2xl p-5 border-2 border-premium-accent cursor-pointer transition pink-glow">
-    <!-- Badge de Pressão Psicológica -->
-    <span class="absolute -top-2.5 right-4 bg-gradient-to-r from-premium-accent to-red-600 text-white text-[8px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider animate-pulse">
-        🔥 RECOMENDADO POR GABI
-    </span>
 
-    <!-- Mudamos para "checked" para iniciar marcado por padrão -->
-    <input type="radio" name="pack-selection" value="promo" checked onclick="selectPack('promo', 19.90, 'Sessão Promo Exclusiva 🎁')" class="hidden">
-    
-    <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-            <div class="w-5 h-5 rounded-full border-2 border-premium-accent flex items-center justify-center p-[2px]">
-                <!-- Iniciamos com a bolinha preenchida -->
-                <div id="dot-promo" class="w-full h-full rounded-full bg-premium-accent"></div>
-            </div>
-            <div>
-                <span class="block text-xs font-black text-white uppercase flex items-center gap-1.5">
-                    Sessão Promo Exclusiva 🎁
-                </span>
-                <span class="block text-[10px] text-zinc-400 mt-0.5">Acesso imediato com desconto especial!</span>
-            </div>
-        </div>
-        <div class="text-right">
-            <span class="block text-[9px] text-zinc-500 line-through">R$ 49,90</span>
-            <span class="text-sm font-black text-premium-gold">R$ 19,90</span>
-        </div>
-    </div>
-</label>
+                    <!-- Opção 4: Sessão Promo Exclusiva (Ultra Destacado e Pré-Selecionado) -->
+                    <label id="label-promo" class="relative block bg-zinc-950 rounded-2xl p-5 border-2 border-premium-accent cursor-pointer transition pink-glow">
+                        <span class="absolute -top-2.5 right-4 bg-gradient-to-r from-premium-accent to-red-600 text-white text-[8px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider animate-pulse">
+                            🔥 RECOMENDADO POR GABI
+                        </span>
+                        <input type="radio" name="pack-selection" value="promo" checked onclick="selectPack('promo', 19.90, 'Sessão Promo Exclusiva 🎁')" class="hidden">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full border-2 border-premium-accent flex items-center justify-center p-[2px]">
+                                    <div id="dot-promo" class="w-full h-full rounded-full bg-premium-accent"></div>
+                                </div>
+                                <div>
+                                    <span class="block text-xs font-black text-white uppercase flex items-center gap-1.5">
+                                        Sessão Promo Exclusiva 🎁
+                                    </span>
+                                    <span class="block text-[10px] text-zinc-400 mt-0.5">Acesso imediato com desconto especial!</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="block text-[9px] text-zinc-500 line-through">R$ 49,90</span>
+                                <span class="text-sm font-black text-premium-gold">R$ 19,90</span>
+                            </div>
+                        </div>
+                    </label>
                 </div>
             </div>
 
@@ -288,9 +284,7 @@
                 <!-- Bloco de Exibição do PIX Gerado (Oculto Inicialmente) -->
                 <div id="pix-display-area" class="hidden bg-zinc-950 p-4 rounded-2xl border border-zinc-800 space-y-4 text-center">
                     <p class="text-xs font-bold text-emerald-400 uppercase tracking-wide">✓ PIX Gerado! Pague para liberar o acesso:</p>
-                    
                     <img id="dynamic-qrcode" src="" alt="QR Code PIX" class="w-48 h-48 mx-auto rounded-lg border-2 border-white p-1 bg-white">
-                    
                     <div class="space-y-2 text-left">
                         <p class="text-[10px] text-zinc-400 text-center">Ou copie o código copia e cola abaixo:</p>
                         <input type="text" id="dynamic-copiacola" readonly class="w-full bg-zinc-900 border border-zinc-800 text-zinc-300 text-[10px] p-2.5 rounded-xl text-center focus:outline-none select-all font-mono">
@@ -315,12 +309,11 @@
             <p class="text-[11px] text-zinc-400 leading-relaxed text-center">
                 Preocupado com quem pode ver a movimentação da conta? Asseguramos sigilo absoluto. No seu extrato bancário não aparecerá nenhuma referência a conteúdos adultos ou à Gabi Costa.
             </p>
-
             <div class="bg-zinc-900 p-3 rounded-2xl border border-zinc-800 space-y-2">
                 <p class="text-[10px] uppercase font-bold text-zinc-500 tracking-wider">Como aparecerá no seu extrato de compras:</p>
                 <div class="flex items-center justify-between bg-black/40 p-2.5 rounded-xl text-xs font-mono text-zinc-300">
                     <span class="text-zinc-500">TECNOLOGIA*PROCESS</span>
-                    <span id="fatura-valor" class="text-emerald-400 font-bold">-R$ 99,90</span>
+                    <span id="fatura-valor" class="text-emerald-400 font-bold">-R$ 19,90</span>
                 </div>
                 <p class="text-[9px] text-zinc-500 text-center italic">Privacidade total garantida de ponta a ponta.</p>
             </div>
@@ -394,11 +387,11 @@
 
     <!-- SCRIPT DE EXECUÇÃO E CONTROLE -->
     <script>
-        // Configurações do pacote inicial ativo
+        // Configurações iniciais do pacote promocional ativo por padrão
         let selectedPack = {
-            id: 'combo',
-            price: 99.90,
-            name: 'Combo Gabi Total 👑'
+            id: 'promo',
+            price: 19.90,
+            name: 'Sessão Promo Exclusiva 🎁'
         };
 
         const BACKEND_URL = "/api/pay"; // Rota padrão Serverless da sua Vercel
@@ -421,11 +414,8 @@
             .then(data => {
                 actionLoading.classList.add('hidden');
                 if(data.success) {
-                    // Preenche o QR code e o campo texto copia e cola na tela
                     document.getElementById('dynamic-qrcode').src = data.qr_code_base64;
                     document.getElementById('dynamic-copiacola').value = data.pix_copia_cola;
-                    
-                    // Mostra o bloco estruturado do PIX para o usuário pagar
                     pixArea.classList.remove('hidden');
                 } else {
                     alert("Erro do sistema ao criar cobrança: " + data.message);
@@ -484,30 +474,42 @@
             }
         }
 
-        // 5. Seleção dinâmica e inteligente de pacotes
-// URLs e dados dos pacotes oficiais - Agora iniciando com o Promo
-let selectedPack = {
-    id: 'promo',
-    price: 19.90,
-    name: 'Sessão Promo Exclusiva 🎁'
-};
+        // 5. Seleção dinâmica e inteligente de pacotes (CORRIGIDA)
+        function selectPack(id, price, name) {
+            selectedPack = { id, price, name };
             
-            // Oculta a área de PIX antiga caso o usuário troque de pacote no meio do processo
+            // Oculta a área de PIX antiga caso o usuário troque de pacote
             document.getElementById('pix-display-area').classList.add('hidden');
             document.getElementById('action-wrapper').classList.remove('hidden');
             
+            // Limpa as classes de todos os labels para o estado comum desmarcado
             ['combo', 'erotico', 'ousado', 'promo'].forEach(p => {
                 const label = document.getElementById(`label-${p}`);
                 const dot = document.getElementById(`dot-${p}`);
-                label.className = "relative block bg-zinc-950 rounded-2xl p-4 border border-zinc-850 cursor-pointer transition";
-                dot.className = "w-full h-full rounded-full bg-transparent";
+                if (label && dot) {
+                    label.className = "relative block bg-zinc-950 rounded-2xl p-4 border border-zinc-850 cursor-pointer transition";
+                    dot.className = "w-full h-full rounded-full bg-transparent";
+                }
             });
 
+            // Aplica as classes destacadas no item clicado
             const activeLabel = document.getElementById(`label-${id}`);
             const activeDot = document.getElementById(`dot-${id}`);
-            activeLabel.className = "relative block bg-zinc-950 rounded-2xl p-4 border-2 border-premium-accent cursor-pointer transition";
-            activeDot.className = "w-full h-full rounded-full bg-premium-accent";
+            
+            if (activeLabel) {
+                // Se for o pacote 'promo', reaplica a estilização ultra destacada (pink-glow e borda-2)
+                if (id === 'promo') {
+                    activeLabel.className = "relative block bg-zinc-950 rounded-2xl p-5 border-2 border-premium-accent cursor-pointer transition pink-glow";
+                } else {
+                    activeLabel.className = "relative block bg-zinc-950 rounded-2xl p-4 border-2 border-premium-accent cursor-pointer transition";
+                }
+            }
+            
+            if (activeDot) {
+                activeDot.className = "w-full h-full rounded-full bg-premium-accent";
+            }
 
+            // Atualiza o valor no simulador de fatura discreta
             document.getElementById('fatura-valor').innerText = `-R$ ${price.toFixed(2).replace('.', ',')}`;
         }
 
