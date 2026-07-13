@@ -7,6 +7,9 @@ app = Flask(__name__)
 
 # Tabela de preços centralizada para suas promoções
 PACKS = {
+    "combo": {"price": 99.90, "name": "Combo Gabi Total 👑"},
+    "ousado": {"price": 79.90, "name": "Sessão Ousada VIP 🛥️"},
+    "erotico": {"price": 29.90, "name": "Sessão Erótica VIP 🔞"}
     "promo": {"price": 29.90, "name": "PROMOÇÃO EXCLUSIVA 🎁"}  # 👈 ADICIONE ESSA LINHA!
 }
 
