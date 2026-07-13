@@ -14,7 +14,6 @@ PACKS = {
 
 NEXUSPAG_API_KEY = os.getenv("NEXUSPAG_API_KEY")
 
-# 🔄 SOLUÇÃO AQUI: Escuta tanto a raiz (padrão Vercel) quanto o caminho cheio
 @app.route('/', methods=['POST'])
 @app.route('/api/pay', methods=['POST'])
 def generate_pix():
@@ -31,7 +30,7 @@ def generate_pix():
         "amount": selected["price"],
         "description": f"Acesso {selected['name']}",
         "external_id": external_id,
-        "webhook_url": "https://seu-site.vercel.app/api/webhook", # Ajuste com seu domínio da Vercel futuramente
+        "webhook_url": "https://gabicosta.vercel.app/api/webhook", # Ajustado para o seu link oficial
         "expiration": 900
     }
 
@@ -43,10 +42,10 @@ def generate_pix():
     try:
         response = requests.post("https://nexuspag.com/api/pix/create", json=payload, headers=headers, timeout=10)
         
-        if response.status_code == 200:
+        # 🔑 CORREÇÃO AQUI: Agora aceita tanto 200 quanto 201 (Created)
+        if response.status_code in [200, 201]:
             res_data = response.json()
             if res_data.get("success"):
-                # Retorna os dados mastigados em JSON puro para o seu JavaScript
                 return jsonify({
                     "success": True,
                     "pix_copia_cola": res_data["transaction"]["pix_copia_cola"],
