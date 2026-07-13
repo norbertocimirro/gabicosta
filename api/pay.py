@@ -5,18 +5,17 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# ===========================================================================
-# 🚀 TABELA DE PREÇOS CENTRALIZADA (Altere aqui para fazer promoções relâmpago!)
-# ===========================================================================
+# Tabela de preços centralizada para suas promoções
 PACKS = {
     "combo": {"price": 99.90, "name": "Combo Gabi Total 👑"},
     "ousado": {"price": 79.90, "name": "Sessão Ousada VIP 🛥️"},
     "erotico": {"price": 29.90, "name": "Sessão Erótica VIP 🔞"}
 }
-# ===========================================================================
 
 NEXUSPAG_API_KEY = os.getenv("NEXUSPAG_API_KEY")
 
+# 🔄 SOLUÇÃO AQUI: Escuta tanto a raiz (padrão Vercel) quanto o caminho cheio
+@app.route('/', methods=['POST'])
 @app.route('/api/pay', methods=['POST'])
 def generate_pix():
     data = request.json or {}
@@ -32,7 +31,7 @@ def generate_pix():
         "amount": selected["price"],
         "description": f"Acesso {selected['name']}",
         "external_id": external_id,
-        "webhook_url": "https://seu-site.vercel.app/api/webhook", # Mude para o seu link da Vercel
+        "webhook_url": "https://seu-site.vercel.app/api/webhook", # Ajuste com seu domínio da Vercel futuramente
         "expiration": 900
     }
 
@@ -43,14 +42,19 @@ def generate_pix():
 
     try:
         response = requests.post("https://nexuspag.com/api/pix/create", json=payload, headers=headers, timeout=10)
+        
         if response.status_code == 200:
             res_data = response.json()
             if res_data.get("success"):
+                # Retorna os dados mastigados em JSON puro para o seu JavaScript
                 return jsonify({
                     "success": True,
                     "pix_copia_cola": res_data["transaction"]["pix_copia_cola"],
                     "qr_code_base64": res_data["transaction"]["qr_code_base64"]
                 })
-        return jsonify({"success": False, "message": "Erro no gateway"}), 500
+            return jsonify({"success": False, "message": "Gateway recusou a criação"}), 400
+            
+        return jsonify({"success": False, "message": f"Erro NexusPag HTTP {response.status_code}"}), 500
+
     except Exception as e:
         return jsonify({"success": False, "message": str(e)}), 502
