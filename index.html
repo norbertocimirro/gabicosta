@@ -385,10 +385,7 @@
         </div>
     </div>
 
-    <!-- SCRIPT DE EXECUÇÃO E CONTROLE -->
-<!-- SCRIPT DE EXECUÇÃO E CONTROLE -->
-    <script>
-        // Configurações do pacote promocional ativo por padrão
+    // 1. Configurações e Variáveis Globais de Estado
         let selectedPack = {
             id: 'promo',
             price: 19.90,
@@ -396,17 +393,16 @@
         };
 
         const BACKEND_URL = "/api/pay"; // Rota padrão Serverless da sua Vercel
+        let checkInterval = null;        // Guarda o temporizador de checagem do PIX
+        let timeInSeconds = 300;         // 5 minutos do cronômetro
 
-        // 1. Chamada Assíncrona para a Vercel gerar o PIX Nativo
-       let checkInterval = null; // Guarda o timer de checagem
-
-        // 1. Chamada para gerar o PIX e iniciar a vigília de pagamento
+        // 2. Chamada Principal: Gera o PIX Dinâmico
         function generateNativePix() {
             const actionWrapper = document.getElementById('action-wrapper');
             const actionLoading = document.getElementById('action-loading');
             const pixArea = document.getElementById('pix-display-area');
 
-            // Limpa qualquer checagem anterior ativa
+            // Limpa qualquer checagem anterior ativa para não sobrecarregar
             if (checkInterval) clearInterval(checkInterval);
 
             actionWrapper.classList.add('hidden');
@@ -421,11 +417,12 @@
             .then(data => {
                 actionLoading.classList.add('hidden');
                 if(data.success) {
+                    // Renderiza o QR Code e o Copia e Cola na tela do usuário
                     document.getElementById('dynamic-qrcode').src = data.qr_code_base64;
                     document.getElementById('dynamic-copiacola').value = data.pix_copia_cola;
                     pixArea.classList.remove('hidden');
 
-                    // 🚀 Inicia a checagem automática a cada 3 segundos passados o ID da transação e o ID do pacote
+                    // Inicia a verificação automática se o PIX foi pago (a cada 3 segundos)
                     startPaymentCheck(data.id, selectedPack.id);
                 } else {
                     alert("Erro ao criar cobrança: " + data.message);
@@ -436,33 +433,32 @@
                 console.error(err);
                 actionLoading.classList.add('hidden');
                 actionWrapper.classList.remove('hidden');
-                alert("Falha na conexão. Tente novamente.");
+                alert("Falha na conexão de rede. Tente novamente.");
             });
         }
 
-        // 2. O "Vigia" que roda em segundo plano procurando pela aprovação
+        // 3. O "Vigia": Verifica o status do pagamento nos bastidores
         function startPaymentCheck(transactionId, packId) {
             checkInterval = setInterval(() => {
                 fetch(`/api/check?id=${transactionId}&pack=${packId}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.paid && data.download_url) {
-                        // Paramos de perguntar para economizar requisições
+                        // Se foi pago, para o cronômetro de checagem imediatamente
                         clearInterval(checkInterval);
                         
-                        // Executa a liberação triunfal na tela do cliente!
+                        // Libera o botão de download triunfal na tela do cliente
                         revealDownloadButton(data.download_url);
                     }
                 })
                 .catch(err => console.error("Erro na checagem automática:", err));
-            }, 3000); // 3 segundos
+            }, 3000);
         }
 
-        // 3. Altera a interface de pagamento para o botão de download liberado
+        // 4. Liberação do Produto: Transforma a tela no botão de Download
         function revealDownloadButton(downloadUrl) {
             const pixArea = document.getElementById('pix-display-area');
             
-            // Substitui o QR code e as instruções por um design de sucesso de alta conversão
             pixArea.innerHTML = `
                 <div class="space-y-4 py-4 animate-bounce">
                     <span class="text-5xl">🔓</span>
@@ -473,12 +469,47 @@
                     </a>
                 </div>
             `;
-            
-            // Toca um feedback visual opcional rolando a página direto pro botão liberado
             pixArea.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // 2. Auxiliar para copiar o código copia e cola com 1 clique
+        // 5. Seleção Dinâmica de Pacotes (Ajusta o layout e o preço ao clicar)
+        function selectPack(id, price, name) {
+            selectedPack = { id, price, name };
+            
+            // Oculta blocos de PIX antigos se o usuário mudar de ideia e clicar em outro pacote
+            document.getElementById('pix-display-area').classList.add('hidden');
+            document.getElementById('action-wrapper').classList.remove('hidden');
+            
+            // Reseta a estilização visual de todos os pacotes para o modo desmarcado
+            ['combo', 'erotico', 'ousado', 'promo'].forEach(p => {
+                const label = document.getElementById(`label-${p}`);
+                const dot = document.getElementById(`dot-${p}`);
+                if (label && dot) {
+                    label.className = "relative block bg-zinc-950 rounded-2xl p-4 border border-zinc-850 cursor-pointer transition";
+                    dot.className = "w-full h-full rounded-full bg-transparent";
+                }
+            });
+
+            // Aplica o destaque visual exclusivo no pacote selecionado
+            const activeLabel = document.getElementById(`label-${id}`);
+            const activeDot = document.getElementById(`dot-${id}`);
+            
+            if (activeLabel) {
+                if (id === 'promo') {
+                    activeLabel.className = "relative block bg-zinc-950 rounded-2xl p-5 border-2 border-premium-accent cursor-pointer transition pink-glow";
+                } else {
+                    activeLabel.className = "relative block bg-zinc-950 rounded-2xl p-4 border-2 border-premium-accent cursor-pointer transition";
+                }
+            }
+            if (activeDot) {
+                activeDot.className = "w-full h-full rounded-full bg-premium-accent";
+            }
+
+            // Atualiza o simulador de fatura discreta na parte inferior
+            document.getElementById('fatura-valor').innerText = `-R$ ${price.toFixed(2).replace('.', ',')}`;
+        }
+
+        // 6. Funções Utilitárias (Cópia, Efeitos e Cronômetro)
         function copyPixText() {
             const input = document.getElementById('dynamic-copiacola');
             input.select();
@@ -487,8 +518,6 @@
             alert("Código PIX Copiado! Abra o app do seu banco e escolha 'PIX Copia e Cola'.");
         }
 
-        // 3. Cronômetro dinâmico de Urgência
-        let timeInSeconds = 300;
         function startTimer() {
             const timerElement = document.getElementById('timer');
             setInterval(() => {
@@ -505,7 +534,6 @@
             }, 1000);
         }
 
-        // 4. Revelador de Censura Interativo
         function adjustBlur(value) {
             const image = document.getElementById('interactive-teaser');
             const text = document.getElementById('blur-level-text');
@@ -522,51 +550,12 @@
             }
         }
 
-        // 5. Seleção dinâmica e inteligente de pacotes (CORRIGIDA)
-        function selectPack(id, price, name) {
-            selectedPack = { id, price, name };
-            
-            // Oculta a área de PIX antiga caso o usuário troque de pacote
-            document.getElementById('pix-display-area').classList.add('hidden');
-            document.getElementById('action-wrapper').classList.remove('hidden');
-            
-            // Limpa as classes de todos os labels para o estado comum desmarcado
-            ['combo', 'erotico', 'ousado', 'promo'].forEach(p => {
-                const label = document.getElementById(`label-${p}`);
-                const dot = document.getElementById(`dot-${p}`);
-                if (label && dot) {
-                    label.className = "relative block bg-zinc-950 rounded-2xl p-4 border border-zinc-850 cursor-pointer transition";
-                    dot.className = "w-full h-full rounded-full bg-transparent";
-                }
-            });
-
-            // Aplica as classes destacadas no item clicado
-            const activeLabel = document.getElementById(`label-${id}`);
-            const activeDot = document.getElementById(`dot-${id}`);
-            
-            if (activeLabel) {
-                // Se for o pacote 'promo', reaplica a estilização ultra destacada
-                if (id === 'promo') {
-                    activeLabel.className = "relative block bg-zinc-950 rounded-2xl p-5 border-2 border-premium-accent cursor-pointer transition pink-glow";
-                } else {
-                    activeLabel.className = "relative block bg-zinc-950 rounded-2xl p-4 border-2 border-premium-accent cursor-pointer transition";
-                }
-            }
-            
-            if (activeDot) {
-                activeDot.className = "w-full h-full rounded-full bg-premium-accent";
-            }
-
-            // Atualiza o valor no simulador de fatura discreta
-            document.getElementById('fatura-valor').innerText = `-R$ ${price.toFixed(2).replace('.', ',')}`;
-        }
-
         function scrollToCheckout() {
             document.getElementById('lock-overlay').classList.add('hidden');
             document.getElementById('checkout-area').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // 6. Sistema de Notificações de Vendas Fictícias
+        // 7. Sistema de Notificações Sociais (Gatilho de Urgência)
         const buyers = ["Felipe S.", "Bruno R.", "Gustavo P.", "Marcelo O.", "Carlos Alberto", "Renato M.", "Thiago de O.", "Alexandre K."];
         const packages = ["Combo Gabi Total 👑", "Sessão Ousada Premium 🛥️", "Combo Gabi Total 👑", "Sessão Erótica VIP 🔞"];
 
@@ -586,11 +575,11 @@
             }, 4500);
         }
 
+        // Inicialização quando a página carrega por completo
         window.onload = function() {
             startTimer();
             setTimeout(triggerSocialNotification, 2000);
             setInterval(triggerSocialNotification, 15000);
         };
-    </script>
 </body>
 </html>
