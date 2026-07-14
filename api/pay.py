@@ -42,11 +42,12 @@ def generate_pix():
         response = requests.post("https://nexuspag.com/api/pix/create", json=payload, headers=headers, timeout=10)
         
         # Aceita 200 ou 201 como sucesso de criação
-        if response.status_code in [200, 201]:
+if response.status_code in [200, 201]:
             res_data = response.json()
             if res_data.get("success"):
                 return jsonify({
                     "success": True,
+                    "id": res_data["transaction"]["id"],  # 👈 ADICIONE ISSA LINHA!
                     "pix_copia_cola": res_data["transaction"]["pix_copia_cola"],
                     "qr_code_base64": res_data["transaction"]["qr_code_base64"]
                 })
