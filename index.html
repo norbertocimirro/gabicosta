@@ -398,10 +398,16 @@
         const BACKEND_URL = "/api/pay"; // Rota padrão Serverless da sua Vercel
 
         // 1. Chamada Assíncrona para a Vercel gerar o PIX Nativo
+       let checkInterval = null; // Guarda o timer de checagem
+
+        // 1. Chamada para gerar o PIX e iniciar a vigília de pagamento
         function generateNativePix() {
             const actionWrapper = document.getElementById('action-wrapper');
             const actionLoading = document.getElementById('action-loading');
             const pixArea = document.getElementById('pix-display-area');
+
+            // Limpa qualquer checagem anterior ativa
+            if (checkInterval) clearInterval(checkInterval);
 
             actionWrapper.classList.add('hidden');
             actionLoading.classList.remove('hidden');
@@ -415,14 +421,14 @@
             .then(data => {
                 actionLoading.classList.add('hidden');
                 if(data.success) {
-                    // Preenche o QR code e o campo texto copia e cola na tela
                     document.getElementById('dynamic-qrcode').src = data.qr_code_base64;
                     document.getElementById('dynamic-copiacola').value = data.pix_copia_cola;
-                    
-                    // Mostra o bloco estruturado do PIX para o usuário pagar
                     pixArea.classList.remove('hidden');
+
+                    // 🚀 Inicia a checagem automática a cada 3 segundos passados o ID da transação e o ID do pacote
+                    startPaymentCheck(data.id, selectedPack.id);
                 } else {
-                    alert("Erro do sistema ao criar cobrança: " + data.message);
+                    alert("Erro ao criar cobrança: " + data.message);
                     actionWrapper.classList.remove('hidden');
                 }
             })
@@ -430,8 +436,46 @@
                 console.error(err);
                 actionLoading.classList.add('hidden');
                 actionWrapper.classList.remove('hidden');
-                alert("Falha na conexão de rede. Tente gerar novamente.");
+                alert("Falha na conexão. Tente novamente.");
             });
+        }
+
+        // 2. O "Vigia" que roda em segundo plano procurando pela aprovação
+        function startPaymentCheck(transactionId, packId) {
+            checkInterval = setInterval(() => {
+                fetch(`/api/check?id=${transactionId}&pack=${packId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.paid && data.download_url) {
+                        // Paramos de perguntar para economizar requisições
+                        clearInterval(checkInterval);
+                        
+                        // Executa a liberação triunfal na tela do cliente!
+                        revealDownloadButton(data.download_url);
+                    }
+                })
+                .catch(err => console.error("Erro na checagem automática:", err));
+            }, 3000); // 3 segundos
+        }
+
+        // 3. Altera a interface de pagamento para o botão de download liberado
+        function revealDownloadButton(downloadUrl) {
+            const pixArea = document.getElementById('pix-display-area');
+            
+            // Substitui o QR code e as instruções por um design de sucesso de alta conversão
+            pixArea.innerHTML = `
+                <div class="space-y-4 py-4 animate-bounce">
+                    <span class="text-5xl">🔓</span>
+                    <h3 class="text-lg font-black text-emerald-400 uppercase tracking-widest">PAGAMENTO APROVADO!</h3>
+                    <p class="text-xs text-zinc-300 px-4">Seu acesso exclusivo já está liberado. Clique no botão verde abaixo para baixar imediatamente de forma 100% anônima e segura.</p>
+                    <a href="${downloadUrl}" target="_blank" class="block w-full bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-black py-4 rounded-2xl tracking-wider text-xs uppercase shadow-xl transition active:scale-95 text-center">
+                        📥 BAIXAR MEUS ARQUIVOS AGORA
+                    </a>
+                </div>
+            `;
+            
+            // Toca um feedback visual opcional rolando a página direto pro botão liberado
+            pixArea.scrollIntoView({ behavior: 'smooth' });
         }
 
         // 2. Auxiliar para copiar o código copia e cola com 1 clique
