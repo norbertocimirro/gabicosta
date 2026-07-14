@@ -14,6 +14,8 @@ PACKS = {
 
 NEXUSPAG_API_KEY = os.getenv("NEXUSPAG_API_KEY")
 
+# 🔄 Blindagem de rotas: responde tanto na raiz da função quanto no caminho completo
+@app.route('/', methods=['POST'])
 @app.route('/api/pay', methods=['POST'])
 def generate_pix():
     data = request.json or {}
@@ -41,16 +43,16 @@ def generate_pix():
     try:
         response = requests.post("https://nexuspag.com/api/pix/create", json=payload, headers=headers, timeout=10)
         
-        # Aceita 200 ou 201 como sucesso de criação
-if response.status_code in [200, 201]:
+        if response.status_code in [200, 201]:
             res_data = response.json()
             if res_data.get("success"):
                 return jsonify({
                     "success": True,
-                    "id": res_data["transaction"]["id"],  # 👈 ADICIONE ISSA LINHA!
+                    "id": res_data["transaction"]["id"],  # Fornece o ID essencial para o rastreio da liberação
                     "pix_copia_cola": res_data["transaction"]["pix_copia_cola"],
                     "qr_code_base64": res_data["transaction"]["qr_code_base64"]
                 })
-        return jsonify({"success": False, "message": "Erro ao gerar PIX"}), 400
+        
+        return jsonify({"success": False, "message": f"Erro na plataforma HTTP {response.status_code}"}), 400
     except Exception as e:
         return jsonify({"success": False, "message": str(e)}), 500
