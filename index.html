@@ -399,12 +399,12 @@
         let timeInSeconds = 300;         // 5 minutos do cronômetro
 
         // 2. Chamada Principal: Gera o PIX Dinâmico
+        // 1. Chamada Assíncrona para a Vercel gerar o PIX Nativo (Com detector de erro real)
         function generateNativePix() {
             const actionWrapper = document.getElementById('action-wrapper');
             const actionLoading = document.getElementById('action-loading');
             const pixArea = document.getElementById('pix-display-area');
 
-            // Limpa qualquer checagem anterior ativa para não sobrecarregar
             if (checkInterval) clearInterval(checkInterval);
 
             actionWrapper.classList.add('hidden');
@@ -415,27 +415,34 @@
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ pack_id: selectedPack.id })
             })
-            .then(response => response.json())
+            .then(response => {
+                // Se a Vercel falhar, captura o texto puro do erro para nos mostrar
+                if (!response.ok) {
+                    return response.text().then(text => {
+                        throw new Error(`HTTP ${response.status} - ${text.slice(0, 80)}`);
+                    });
+                }
+                return response.json();
+            })
             .then(data => {
                 actionLoading.classList.add('hidden');
                 if(data.success) {
-                    // Renderiza o QR Code e o Copia e Cola na tela do usuário
                     document.getElementById('dynamic-qrcode').src = data.qr_code_base64;
                     document.getElementById('dynamic-copiacola').value = data.pix_copia_cola;
                     pixArea.classList.remove('hidden');
 
-                    // Inicia a verificação automática se o PIX foi pago (a cada 3 segundos)
+                    // Inicia a verificação automática se o PIX foi pago
                     startPaymentCheck(data.id, selectedPack.id);
                 } else {
-                    alert("Erro ao criar cobrança: " + data.message);
+                    alert("Erro do sistema ao criar cobrança: " + data.message);
                     actionWrapper.classList.remove('hidden');
                 }
             })
             .catch(err => {
-                console.error(err);
                 actionLoading.classList.add('hidden');
                 actionWrapper.classList.remove('hidden');
-                alert("Falha na conexão de rede. Tente novamente.");
+                // Mostra o erro exato na tela em vez da mensagem genérica antiga
+                alert("Falha no processo de comunicação.\n\nDetalhes: " + err.message);
             });
         }
 
