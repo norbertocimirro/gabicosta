@@ -173,68 +173,8 @@
                     <h3 class="text-xs uppercase font-black tracking-wider text-zinc-300">Selecione o Conteúdo VIP:</h3>
                 </div>
 
-                <div class="space-y-2.5">
-                    <!-- Opção 1: Combo Gabi Total -->
-                    <label id="label-combo" class="relative block bg-zinc-950 rounded-2xl p-4 border border-zinc-850 cursor-pointer transition">
-                        <input type="radio" name="pack-selection" value="combo" onclick="selectPack('combo', 99.90, 'Combo Gabi Total 👑')" class="hidden">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <div class="w-5 h-5 rounded-full border-2 border-zinc-850 flex items-center justify-center p-[2px]">
-                                    <div id="dot-combo" class="w-full h-full rounded-full bg-transparent"></div>
-                                </div>
-                                <div>
-                                    <span class="block text-xs font-black text-white uppercase flex items-center gap-1.5">
-                                        Combo Gabi Total <span class="bg-premium-accent text-[8px] text-white font-bold px-1.5 rounded-full animate-pulse">Economia Máxima</span>
-                                    </span>
-                                    <span class="block text-[10px] text-zinc-400 mt-0.5">30 Fotos (Erótico + Ousado)</span>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <span class="block text-[9px] text-zinc-500 line-through">R$ 109,80</span>
-                                <span class="text-sm font-black text-premium-gold">R$ 99,90</span>
-                            </div>
-                        </div>
-                    </label>
-
-                    <!-- Opção 2: Ensaio Ousado -->
-                    <label id="label-ousado" class="relative block bg-zinc-950 rounded-2xl p-4 border border-zinc-850 cursor-pointer transition">
-                        <input type="radio" name="pack-selection" value="ousado" onclick="selectPack('ousado', 79.90, 'Sessão Ousada VIP 🛥️')" class="hidden">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <div class="w-5 h-5 rounded-full border-2 border-zinc-850 flex items-center justify-center p-[2px]">
-                                    <div id="dot-ousado" class="w-full h-full rounded-full bg-transparent"></div>
-                                </div>
-                                <div>
-                                    <span class="block text-xs font-black text-white uppercase">Sessão Ousada (Premium) 🛥️</span>
-                                    <span class="block text-[10px] text-zinc-400 mt-0.5">15 Fotos. Alta Produção e Biquíni Premium</span>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <span class="text-sm font-black text-zinc-200">R$ 79,90</span>
-                            </div>
-                        </div>
-                    </label>
-
-                    <!-- Opção 3: Ensaio Erótico -->
-                    <label id="label-erotico" class="relative block bg-zinc-950 rounded-2xl p-4 border border-zinc-850 cursor-pointer transition">
-                        <input type="radio" name="pack-selection" value="erotico" onclick="selectPack('erotico', 29.90, 'Sessão Erótica VIP 🔞')" class="hidden">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <div class="w-5 h-5 rounded-full border-2 border-zinc-850 flex items-center justify-center p-[2px]">
-                                    <div id="dot-erotico" class="w-full h-full rounded-full bg-transparent"></div>
-                                </div>
-                                <div>
-                                    <span class="block text-xs font-black text-white uppercase">Sessão Erótica 🔞</span>
-                                    <span class="block text-[10px] text-zinc-400 mt-0.5">15 Fotos. Lingerie e Provocação</span>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <span class="text-sm font-black text-zinc-200">R$ 29,90</span>
-                            </div>
-                        </div>
-                    </label>
-
-                    <!-- Opção 4: Sessão Promo Exclusiva (Ultra Destacado e Pré-Selecionado) -->
+               <div class="space-y-2.5">
+                    <!-- Opção 1: Sessão Promo Exclusiva (SUPER DESTACADA - VEM MARCADA) -->
                     <label id="label-promo" class="relative block bg-zinc-950 rounded-2xl p-5 border-2 border-premium-accent cursor-pointer transition pink-glow">
                         <span class="absolute -top-2.5 right-4 bg-gradient-to-r from-premium-accent to-red-600 text-white text-[8px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider animate-pulse">
                             🔥 RECOMENDADO POR GABI
@@ -249,17 +189,35 @@
                                     <span class="block text-xs font-black text-white uppercase flex items-center gap-1.5">
                                         Sessão Promo Exclusiva 🎁
                                     </span>
-                                    <span class="block text-[10px] text-zinc-400 mt-0.5">Acesso imediato com desconto especial!</span>
+                                    <span class="block text-[10px] text-zinc-400 mt-0.5">Álbum Completo. Desconto por tempo limitado!</span>
                                 </div>
                             </div>
                             <div class="text-right">
-                                <span class="block text-[9px] text-zinc-500 line-through">R$ 109,80</span>
+                                <span class="block text-[9px] text-zinc-500 line-through">R$ 49,90</span>
                                 <span class="text-sm font-black text-premium-gold">R$ 19,90</span>
                             </div>
                         </div>
                     </label>
+
+                    <!-- Opção 2: Sessão Promo Metade (NOVO PACK) -->
+                    <label id="label-promo_metade" class="relative block bg-zinc-950 rounded-2xl p-4 border border-zinc-850 cursor-pointer transition">
+                        <input type="radio" name="pack-selection" value="promo_metade" onclick="selectPack('promo_metade', 9.90, 'Sessão Promo Metade 🌓')" class="hidden">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full border-2 border-zinc-850 flex items-center justify-center p-[2px]">
+                                    <div id="dot-promo_metade" class="w-full h-full rounded-full bg-transparent"></div>
+                                </div>
+                                <div>
+                                    <span class="block text-xs font-black text-white uppercase">Sessão Promo Metade 🌓</span>
+                                    <span class="block text-[10px] text-zinc-400 mt-0.5">Metade das fotos do ensaio exclusivo.</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-sm font-black text-zinc-200">R$ 9,90</span>
+                            </div>
+                        </div>
+                    </label>
                 </div>
-            </div>
 
             <!-- PASSO 2: GERADOR DINÂMICO -->
             <div class="space-y-3 pt-2">
