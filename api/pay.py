@@ -6,10 +6,8 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 PACKS = {
-    "combo": {"price": 99.90, "name": "Combo Gabi Total 👑"},
-    "ousado": {"price": 79.90, "name": "Sessão Ousada VIP 🛥️"},
-    "erotico": {"price": 29.90, "name": "Sessão Erótica VIP 🔞"},
-    "promo": {"price": 19.90, "name": "Sessão Promo Exclusiva 🎁"}
+    "promo": {"price": 19.90, "name": "Sessão Promo Exclusiva 🎁"},
+    "promo_metade": {"price": 9.90, "name": "Sessão Promo Metade 🌓"}
 }
 
 NEXUSPAG_API_KEY = os.getenv("NEXUSPAG_API_KEY")
