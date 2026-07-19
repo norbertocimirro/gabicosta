@@ -439,16 +439,16 @@
             pixArea.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // 5. Seleção Dinâmica de Pacotes (Ajusta o layout e o preço ao clicar)
+        // 5. Seleção Dinâmica de Pacotes (Atualizada para apenas 2 opções)
         function selectPack(id, price, name) {
             selectedPack = { id, price, name };
             
-            // Oculta blocos de PIX antigos se o usuário mudar de ideia e clicar em outro pacote
+            // Oculta blocos de PIX antigos se o usuário mudar de ideia
             document.getElementById('pix-display-area').classList.add('hidden');
             document.getElementById('action-wrapper').classList.remove('hidden');
             
-            // Reseta a estilização visual de todos os pacotes para o modo desmarcado
-            ['combo', 'erotico', 'ousado', 'promo'].forEach(p => {
+            // ATUALIZADO: Remove o destaque visual apenas de 'promo' e 'promo_metade'
+            ['promo', 'promo_metade'].forEach(p => {
                 const label = document.getElementById(`label-${p}`);
                 const dot = document.getElementById(`dot-${p}`);
                 if (label && dot) {
