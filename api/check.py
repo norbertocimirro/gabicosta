@@ -10,8 +10,8 @@ NEXUSPAG_API_KEY = os.getenv("NEXUSPAG_API_KEY")
 # 📦 LINKS DE ENTREGA (Substitua pelos seus links reais do Google Drive/Mega!)
 # ===========================================================================
 DELIVERY_LINKS = {
-    "promo": "https://mega.nz/folder/LINK_DA_PROMO_COMPLETA",
-    "promo_metade": "https://mega.nz/folder/LINK_DA_METADE_DAS_FOTOS"
+    "promo": "https://mega.nz/folder/bb5gTB6a#Pl_xnAZk6WTrQlQwSPUWoA",
+    "promo_metade": "https://mega.nz/folder/rOoCDKLS#IlkZrA5kxG3RFL9ZPkovyA"
 }
 # ===========================================================================
 
