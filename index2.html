@@ -1,1 +1,705 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gabi Costa | Pack Exclusivo</title>
+
+<meta name="description" content="Pack exclusivo Gabi Costa com 30 fotos em alta qualidade. Download imediato após pagamento PIX.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+<script>
+
+tailwind.config = {
+
+theme: {
+
+extend: {
+
+colors: {
+
+pinkpremium:"#ff2d8d"
+
+}
+
+}
+
+}
+
+}
+
+</script>
+
+
+<style>
+
+body{
+    background:#050505;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.glow{
+
+box-shadow:
+0 0 40px rgba(255,45,141,.35);
+
+}
+
+
+</style>
+
+
+</head>
+
+
+
+<body class="text-white">
+
+
+<!-- FUNDO -->
+
+<div class="fixed inset-0 -z-10 bg-gradient-to-b from-black via-[#12000b] to-black"></div>
+
+
+
+<!-- HERO -->
+
+<section class="min-h-screen flex flex-col items-center px-5 pt-8 pb-24">
+
+
+    <!-- FOTO -->
+
+    <div class="relative w-full max-w-md">
+
+
+        <div class="absolute inset-0 bg-pinkpremium/30 blur-3xl rounded-full"></div>
+
+
+        <img
+        src="face.png"
+        alt="Gabi Costa"
+        class="relative w-full rounded-3xl shadow-2xl object-cover">
+
+
+    </div>
+
+
+
+    <!-- TEXTO -->
+
+    <div class="text-center mt-8">
+
+
+        <h1 class="text-4xl font-black">
+
+            Gabi Costa
+
+        </h1>
+
+
+        <h2 class="mt-3 text-2xl font-bold text-pink-400">
+
+            Pack Exclusivo
+
+        </h2>
+
+
+        <p class="mt-5 text-lg text-zinc-300">
+
+            30 fotos em alta qualidade
+
+        </p>
+
+
+    </div>
+
+
+
+    <!-- BENEFÍCIOS RÁPIDOS -->
+
+    <div class="mt-8 w-full max-w-md space-y-3">
+
+
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-4 text-center">
+
+            🔥 Download imediato
+
+        </div>
+
+
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-4 text-center">
+
+            ⚡ Pagamento via PIX
+
+        </div>
+
+
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-4 text-center">
+
+            📦 Link privado Mega.nz
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- PREÇO -->
+
+    <div class="mt-8 text-center">
+
+
+        <p class="text-zinc-400 line-through">
+
+            R$ 39,90
+
+        </p>
+
+
+        <div class="text-5xl font-black text-pink-400">
+
+            R$ 19,90
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- BOTÃO -->
+
+    <button
+    onclick="abrirPix()"
+    class="mt-8 w-full max-w-md py-5 rounded-2xl bg-pink-500 text-xl font-black glow">
+
+
+        🔥 COMPRAR AGORA
+
+
+    </button>
+
+
+
+</section>
+<!-- ================================================= -->
+<!-- MODAL PIX -->
+<!-- ================================================= -->
+
+<div 
+id="pixModal"
+class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm px-5 flex items-center justify-center">
+
+
+    <div class="w-full max-w-md bg-[#111] border border-white/10 rounded-3xl p-6">
+
+
+        <div class="text-center">
+
+
+            <h2 class="text-2xl font-black">
+                Finalizar compra
+            </h2>
+
+
+            <p class="mt-2 text-zinc-400">
+                Escaneie o QR Code ou copie o PIX
+            </p>
+
+
+        </div>
+
+
+
+        <!-- Loading -->
+
+        <div id="pixLoading" class="py-10 text-center">
+
+            <div class="text-4xl animate-spin">
+                ⏳
+            </div>
+
+            <p class="mt-4 text-zinc-400">
+                Gerando PIX...
+            </p>
+
+        </div>
+
+
+
+        <!-- Área PIX -->
+
+        <div id="pixContent" class="hidden mt-6">
+
+
+            <div class="bg-white p-4 rounded-2xl">
+
+                <img
+                id="qrCode"
+                class="w-full"
+                alt="QR Code PIX">
+
+            </div>
+
+
+
+            <p class="mt-5 text-sm text-zinc-400 text-center">
+
+                PIX Copia e Cola
+
+            </p>
+
+
+
+            <textarea
+            id="pixCode"
+            readonly
+            class="mt-3 w-full h-28 bg-black border border-white/10 rounded-xl p-3 text-xs text-zinc-300"></textarea>
+
+
+
+            <button
+            onclick="copiarPix()"
+            class="mt-4 w-full py-4 rounded-xl bg-pink-500 font-black">
+
+
+                COPIAR PIX
+
+
+            </button>
+
+
+
+        </div>
+
+
+
+        <!-- Erro -->
+
+        <div 
+        id="pixError"
+        class="hidden mt-5 text-center text-red-400">
+
+        </div>
+
+
+
+        <button
+        onclick="fecharPix()"
+        class="mt-5 w-full py-3 rounded-xl bg-white/5">
+
+            Fechar
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+<!-- ================================================= -->
+<!-- SCRIPT PAGAMENTO -->
+<!-- ================================================= -->
+
+
+<script>
+
+
+async function abrirPix(){
+
+
+    const modal = document.getElementById("pixModal");
+
+    modal.classList.remove("hidden");
+
+
+    document.getElementById("pixLoading")
+    .classList.remove("hidden");
+
+
+    document.getElementById("pixContent")
+    .classList.add("hidden");
+
+
+    document.getElementById("pixError")
+    .classList.add("hidden");
+
+
+
+    try{
+
+
+        const response = await fetch("/api/pay",{
+
+
+            method:"POST",
+
+
+            headers:{
+
+                "Content-Type":"application/json"
+
+            },
+
+
+            body:JSON.stringify({
+
+                pack_id:"promo"
+
+            })
+
+
+        });
+
+
+
+        const data = await response.json();
+
+
+
+        if(!data.success){
+
+
+            throw new Error(data.message || "Erro ao gerar PIX");
+
+
+        }
+
+
+
+
+        document.getElementById("qrCode").src =
+
+        "data:image/png;base64," + data.qr_code_base64;
+
+
+
+        document.getElementById("pixCode").value =
+
+        data.pix_copia_col;
+
+      transactionId = data.id;
+iniciarVerificacao();
+
+
+
+        document.getElementById("pixLoading")
+        .classList.add("hidden");
+
+
+
+        document.getElementById("pixContent")
+        .classList.remove("hidden");
+
+
+
+    }
+
+    catch(error){
+
+
+        document.getElementById("pixLoading")
+        .classList.add("hidden");
+
+
+        const box =
+        document.getElementById("pixError");
+
+
+        box.innerHTML =
+        error.message;
+
+
+        box.classList.remove("hidden");
+
+
+    }
+
+
+}
+
+
+
+
+function fecharPix(){
+
+    document
+    .getElementById("pixModal")
+    .classList.add("hidden");
+
+}
+
+
+
+
+async function copiarPix(){
+
+
+    const campo =
+    document.getElementById("pixCode");
+
+
+    await navigator.clipboard.writeText(
+        campo.value
+    );
+
+
+    alert("PIX copiado!");
+
+}
+
+
+</script>
+<!-- ================================================= -->
+<!-- STATUS DO PAGAMENTO -->
+<!-- ================================================= -->
+
+
+<div
+id="paymentStatus"
+class="hidden fixed inset-0 z-[60] bg-black/90 backdrop-blur-sm px-5 flex items-center justify-center">
+
+
+    <div class="w-full max-w-md bg-[#111] border border-white/10 rounded-3xl p-8 text-center">
+
+
+        <div id="checkingPayment">
+
+
+            <div class="text-5xl animate-pulse">
+                ⏳
+            </div>
+
+
+            <h2 class="mt-5 text-2xl font-black">
+
+                Aguardando pagamento
+
+            </h2>
+
+
+            <p class="mt-3 text-zinc-400">
+
+                Assim que o PIX for confirmado,
+                seu download será liberado.
+
+            </p>
+
+
+        </div>
+
+
+
+
+        <div
+        id="paymentApproved"
+        class="hidden">
+
+
+            <div class="text-5xl">
+                ✅
+            </div>
+
+
+            <h2 class="mt-5 text-3xl font-black text-green-400">
+
+                Pagamento aprovado!
+
+            </h2>
+
+
+            <p class="mt-4 text-zinc-300">
+
+                Seu pack está pronto.
+
+            </p>
+
+
+
+            <a
+            href="SEU_LINK_MEGA_AQUI"
+            class="block mt-8 py-5 rounded-2xl bg-pink-500 font-black text-xl">
+
+
+                BAIXAR PACK
+
+
+            </a>
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+let transactionId = null;
+
+
+
+// ====================================
+// ALTERAÇÃO DA FUNÇÃO abrirPix()
+// ====================================
+
+
+// Depois que receber o retorno da NexusPag,
+// adicione estas linhas:
+//
+// transactionId = data.id;
+// iniciarVerificacao();
+
+
+
+function iniciarVerificacao(){
+
+
+    document
+    .getElementById("paymentStatus")
+    .classList.remove("hidden");
+
+
+
+    const intervalo = setInterval(async()=>{
+
+
+        try{
+
+
+            const resposta = await fetch(
+                "/api/status?id=" + transactionId
+            );
+
+
+
+            const status =
+            await resposta.json();
+
+
+
+            if(status.paid){
+
+
+
+                clearInterval(intervalo);
+
+
+
+                document
+                .getElementById("checkingPayment")
+                .classList.add("hidden");
+
+
+
+                document
+                .getElementById("paymentApproved")
+                .classList.remove("hidden");
+
+
+
+            }
+
+
+
+        }
+
+        catch(e){
+
+            console.log(e);
+
+        }
+
+
+
+    },5000);
+
+
+
+}
+
+
+</script>
+<!-- ================================================= -->
+<!-- BOTÃO FIXO MOBILE -->
+<!-- ================================================= -->
+
+
+<div class="fixed bottom-0 left-0 right-0 z-40 p-4 bg-black/80 backdrop-blur border-t border-white/10 md:hidden">
+
+
+    <button
+    onclick="abrirPix()"
+    class="w-full py-4 rounded-2xl bg-pink-500 text-lg font-black glow">
+
+
+        🔥 COMPRAR PACK - R$ 19,90
+
+
+    </button>
+
+
+</div>
+
+
+
+
+
+<!-- ================================================= -->
+<!-- RODAPÉ -->
+<!-- ================================================= -->
+
+
+<footer class="border-t border-white/10 py-10 mb-20 md:mb-0">
+
+
+    <div class="text-center px-5">
+
+
+        <h3 class="font-black text-xl">
+
+            Gabi Costa
+
+        </h3>
+
+
+        <p class="mt-3 text-sm text-zinc-500">
+
+            Pack exclusivo digital
+
+        </p>
+
+
+        <p class="mt-5 text-xs text-zinc-600">
+
+            Pagamento seguro via PIX.
+            Download liberado após confirmação.
+
+        </p>
+
+
+    </div>
+
+
+</footer>
+</body>
+
+</html>
