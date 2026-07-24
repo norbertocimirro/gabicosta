@@ -27,6 +27,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
+    <div class="fixed inset-0 -z-20">
+
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/noisy-grid.png')] opacity-[0.04]"></div>
+
+</div>
   body {
     font-family: 'Inter', sans-serif;
   }
@@ -55,8 +60,7 @@
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;850;900&display=swap" rel="stylesheet">
-    <style>
+   <style>
         .pink-glow {
             box-shadow: 0 0 35px 5px rgba(255, 0, 85, 0.45);
         }
@@ -121,7 +125,7 @@ backdrop-blur">
           <img
             src="face.png"
             alt="Gabi Costa"
-            class="w-full h-full object-cover"
+            class="w-full object-cover transition duration-700 hover:scale-105"
           />
         </div>
 
@@ -190,6 +194,28 @@ VIP EXCLUSIVE
           Entre para a área VIP privada da Gabi Costa. Receba acesso imediato após o pagamento e veja conteúdos exclusivos disponíveis apenas para membros.
         </p>
 
+          <div class="flex flex-wrap gap-3 mb-10">
+
+<span class="px-4 py-2 rounded-full bg-white/5 border border-white/10">
+
+⭐ 3.200+ Clientes
+
+</span>
+
+<span class="px-4 py-2 rounded-full bg-white/5 border border-white/10">
+
+⚡ Liberação imediata
+
+</span>
+
+<span class="px-4 py-2 rounded-full bg-white/5 border border-white/10">
+
+🔒 Pagamento Seguro
+
+</span>
+
+</div>
+          
         <!-- BENEFÍCIOS -->
         <div class="grid sm:grid-cols-2 gap-3 mb-8">
           <div class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur">
@@ -263,9 +289,10 @@ Pagamento 100% seguro
         <!-- CTA -->
         <div class="flex flex-col sm:flex-row gap-4 mb-8">
           <a
-            href="#checkout"
-            class="group inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-pink-500 to-fuchsia-500 px-8 py-4 text-lg font-bold shadow-[0_20px_60px_rgba(236,72,153,0.35)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_25px_70px_rgba(236,72,153,0.5)]">
-            ❤️ QUERO ACESSAR AGORA
+href="#checkout"
+class="group relative overflow-hidden inline-flex items-center justify-center gap-3 rounded-3xl bg-gradient-to-r from-pink-500 via-fuchsia-500 to-pink-600 px-10 py-5 text-xl font-extrabold shadow-[0_25px_80px_rgba(236,72,153,.45)] transition duration-300 hover:scale-105">
+            <span class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition"></span>
+              ❤️ QUERO ACESSAR AGORA
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
@@ -356,4 +383,5 @@ to-fuchsia-500">
       ❤️ Acessar por R$ 19,90
     </a>
   </div>
+</body>
 </html>
