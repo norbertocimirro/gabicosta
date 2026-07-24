@@ -10,110 +10,127 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabi Costa | Conteúdo Exclusivo</title>
+    <title>Gabi Costa | Conteúdo Exclusivo VIP</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
+        .glow-button {
+            box-shadow: 0 0 20px rgba(219, 39, 119, 0.4);
+        }
     </style>
 </head>
-<body class="bg-black text-white antialiased selection:bg-pink-600 selection:text-white">
+<body class="bg-zinc-950 text-white antialiased selection:bg-pink-600 selection:text-white">
 
-    <main class="max-w-md mx-auto px-4 py-6 space-y-5">
+    <main class="max-w-md mx-auto px-4 py-5 space-y-4">
 
-        <!-- CABEÇALHO ESTILO PERFIL (FAMILIAR AO FACEBOOK/INSTAGRAM) -->
-        <div class="flex items-center gap-3 pb-3 border-b border-zinc-800">
-            <div class="relative">
-                <img src="face.png" alt="Gabi Costa" class="w-16 h-16 rounded-full object-cover border-2 border-pink-500">
-                <span class="absolute bottom-0 right-0 w-4 h-4 bg-emerald-500 rounded-full border-2 border-black"></span>
-            </div>
-            <div>
-                <div class="flex items-center gap-1.5">
-                    <h1 class="text-base font-bold text-white">Gabi Costa</h1>
-                    <span class="text-blue-400 text-xs" title="Verificado">✓</span>
+        <!-- HEADER ESTILO PERFIL OFICIAL -->
+        <div class="flex items-center justify-between pb-3 border-b border-zinc-800">
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <img src="face.png" alt="Gabi Costa" class="w-14 h-14 rounded-full object-cover border-2 border-pink-500 p-0.5">
+                    <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-zinc-950"></span>
                 </div>
-                <p class="text-xs text-zinc-400">Área Privada VIP</p>
-                <p class="text-[11px] text-emerald-400 font-medium mt-0.5">● Online</p>
+                <div>
+                    <div class="flex items-center gap-1">
+                        <h1 class="text-base font-extrabold text-white tracking-tight">Gabi Costa</h1>
+                        <span class="text-blue-400 text-xs">✓</span>
+                    </div>
+                    <p class="text-[11px] text-zinc-400">Canal Privado VIP</p>
+                    <p class="text-[10px] text-emerald-400 font-semibold mt-0.5 flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Online agora no VIP
+                    </p>
+                </div>
             </div>
+            <span class="bg-pink-500/10 text-pink-400 text-[10px] font-bold px-2.5 py-1 rounded-full border border-pink-500/20">
+                EXCLUSIVO
+            </span>
         </div>
 
-        <!-- PRÉVIA DO CONTEÚDO (LIMPA) -->
+        <!-- MENSAGEM PESSOAL (BALÃO ESTILO ZAP) -->
+        <div class="bg-zinc-900 border border-zinc-800 p-3.5 rounded-2xl rounded-tl-none relative space-y-1">
+            <p class="text-[10px] font-bold text-pink-400 uppercase tracking-wider">Gabi Costa:</p>
+            <p class="text-xs text-zinc-200 leading-relaxed font-medium">
+                "Oi! Preparei este ensaio completo e os vídeos privados que não posso postar no Facebook. Tudo sem censura e disponível imediatamente no seu celular."
+            </p>
+        </div>
+
+        <!-- REVELADOR INTERATIVO (MICRO-ENGAGEMENT) -->
         <div class="space-y-2">
-            <div class="relative rounded-2xl overflow-hidden border border-zinc-800 aspect-[4/5] bg-zinc-900">
-                <img id="interactive-teaser" src="visual.png" alt="Prévia Gabi Costa" class="w-full h-full object-cover filter blur-xl transition-all duration-300">
+            <div class="relative rounded-2xl overflow-hidden border border-zinc-800 aspect-[4/5] bg-zinc-900 shadow-2xl">
+                <img id="interactive-teaser" src="visual.png" alt="Prévia VIP" class="w-full h-full object-cover filter blur-xl transition-all duration-200">
                 
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-4 text-center">
-                    <p class="text-xs font-semibold text-zinc-200 mb-1">Ensaio Completo + Vídeos Exclusivos</p>
-                    <p class="text-[11px] text-zinc-400">Liberação imediata após o PIX</p>
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent flex flex-col justify-end p-4 text-center">
+                    <span class="bg-black/60 backdrop-blur-md text-pink-400 text-[10px] font-bold py-1 px-3 rounded-full w-fit mx-auto border border-pink-500/30 mb-1">
+                        🔥 ÁLBOUM COMPLETO + VÍDEOS EXCLUSIVOS
+                    </span>
                 </div>
             </div>
 
-            <!-- CONTROLE DE BORRADOR SIMPLES -->
+            <!-- SLIDER COM INCENTIVO VISUAL -->
             <div class="bg-zinc-900 p-3 rounded-xl border border-zinc-800 space-y-1.5">
-                <div class="flex justify-between text-xs text-zinc-400">
-                    <span>Arraste para testar a nitidez:</span>
-                    <span id="blur-level-text" class="text-pink-500 font-bold">0%</span>
+                <div class="flex justify-between text-[11px] font-bold">
+                    <span class="text-zinc-400">Arraste para revelar a foto:</span>
+                    <span id="blur-level-text" class="text-pink-500">0% Revelado</span>
                 </div>
-                <input id="blur-slider" type="range" min="0" max="100" value="0" oninput="adjustBlur(this.value)" class="w-full h-1.5 bg-zinc-700 rounded-lg appearance-none cursor-pointer accent-pink-500">
+                <input id="blur-slider" type="range" min="0" max="100" value="0" oninput="adjustBlur(this.value)" class="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-pink-500">
             </div>
         </div>
 
-        <!-- MENSAGEM DIRETA DA GABI -->
-        <div class="bg-zinc-900/80 p-4 rounded-xl border border-zinc-800 space-y-2 text-xs text-zinc-300 leading-relaxed">
-            <p class="font-bold text-white text-sm">O que está incluído no pacote:</p>
-            <ul class="space-y-1.5 text-zinc-300">
-                <li class="flex items-center gap-2">✨ <span>Álbum de fotos completo sem censura</span></li>
-                <li class="flex items-center gap-2">🎬 <span>Vídeos exclusivos em alta definição</span></li>
-                <li class="flex items-center gap-2">🔒 <span>Acesso discreto (nada consta no seu extrato)</span></li>
-            </ul>
-        </div>
-
-        <!-- ÁREA DE PAGAMENTO/CHECKOUT (DIRETA AO PONTO) -->
-        <div id="checkout-area" class="bg-zinc-900 rounded-2xl border border-pink-500/40 p-5 space-y-4 shadow-xl">
+        <!-- ÁREA DE CHECKOUT (FOCO TOTAL EM AÇÃO RÁPIDA) -->
+        <div id="checkout-area" class="bg-zinc-900 rounded-2xl border-2 border-pink-500/60 p-4 space-y-3.5 shadow-2xl relative">
             
-            <div class="text-center space-y-1">
-                <span class="text-xs text-zinc-400 uppercase tracking-wider block font-semibold">Valor do Acesso VIP</span>
-                <div class="flex items-center justify-center gap-2">
-                    <span class="text-xs text-zinc-500 line-through">R$ 49,90</span>
-                    <span class="text-2xl font-extrabold text-pink-500">R$ 19,90</span>
+            <div class="text-center space-y-0.5">
+                <span class="text-[10px] font-extrabold text-emerald-400 uppercase tracking-widest block">
+                    ⚡ LIBERAÇÃO IMEDIATA VIA PIX
+                </span>
+                <div class="flex items-center justify-center gap-2 pt-1">
+                    <span class="text-xs text-zinc-500 line-through font-bold">R$ 49,90</span>
+                    <span class="text-2xl font-black text-white">R$ 19,90</span>
+                    <span class="bg-emerald-500/20 text-emerald-400 text-[9px] font-extrabold px-2 py-0.5 rounded uppercase">60% OFF</span>
                 </div>
             </div>
 
             <!-- BOTÃO GERAR PIX -->
             <div id="action-wrapper">
-                <button onclick="generateNativePix()" class="w-full bg-pink-600 hover:bg-pink-500 active:scale-95 text-white font-bold py-3.5 px-4 rounded-xl transition text-sm tracking-wide shadow-lg flex items-center justify-center gap-2">
-                    <span>LIBERAR ACESSO NO PIX</span>
-                    <span>⚡</span>
+                <button onclick="generateNativePix()" class="glow-button w-full bg-gradient-to-r from-pink-600 to-pink-500 hover:from-pink-500 hover:to-pink-400 active:scale-95 text-white font-extrabold py-3.5 px-4 rounded-xl transition text-xs tracking-wider uppercase flex items-center justify-center gap-2">
+                    <span>GERAR CHAVE PIX AGORA</span>
+                    <span class="text-sm">🔑</span>
                 </button>
             </div>
 
             <!-- CARREGANDO -->
             <div id="action-loading" class="hidden text-center py-3 space-y-2">
                 <div class="inline-block w-5 h-5 border-2 border-pink-500 border-t-transparent rounded-full animate-spin"></div>
-                <p class="text-xs text-zinc-400">Gerando seu código PIX...</p>
+                <p class="text-xs text-zinc-400 font-medium">Gerando QR Code PIX seguro...</p>
             </div>
 
             <!-- EXIBIÇÃO DO PIX GERADO -->
-            <div id="pix-display-area" class="hidden bg-black p-4 rounded-xl border border-zinc-800 space-y-3 text-center">
-                <p class="text-xs font-bold text-emerald-400">✓ PIX Gerado com sucesso!</p>
+            <div id="pix-display-area" class="hidden bg-zinc-950 p-4 rounded-xl border border-zinc-800 space-y-3 text-center">
+                <p class="text-xs font-bold text-emerald-400 uppercase">✓ PIX Gerado! Pague para Acessar:</p>
                 <img id="dynamic-qrcode" src="" alt="QR Code PIX" class="w-44 h-44 mx-auto rounded-lg border border-zinc-700 p-1 bg-white">
                 
                 <div class="space-y-2">
                     <input type="text" id="dynamic-copiacola" readonly class="w-full bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs p-2.5 rounded-lg text-center select-all font-mono">
-                    <button onclick="copyPixText()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold py-3 rounded-lg transition uppercase">
+                    <button onclick="copyPixText()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black py-3 rounded-lg transition uppercase tracking-wider">
                         📋 Copiar Código PIX
                     </button>
                 </div>
-                <p class="text-[10px] text-zinc-500 animate-pulse">Aprovação automática e envio imediato no seu e-mail.</p>
+                <p class="text-[10px] text-zinc-500 animate-pulse">Após pagar, o acesso é liberado automaticamente nesta tela.</p>
             </div>
 
-            <p class="text-[10px] text-zinc-500 text-center">🔒 Pagamento 100% seguro e anônimo.</p>
+            <!-- PROVA SOCIAL RÁPIDA -->
+            <div class="pt-2 border-t border-zinc-800 flex items-center justify-between text-[10px] text-zinc-400">
+                <span class="flex items-center gap-1">🔒 Compra 100% Anônima</span>
+                <span class="text-amber-400 font-bold">★ 4.9/5.0 (Mais de 1.400 acessos)</span>
+            </div>
         </div>
 
         <!-- RODAPÉ DISCRETO -->
         <footer class="text-center pt-2 text-[10px] text-zinc-600 space-y-1">
-            <p>© Gabi Costa VIP. Conteúdo para maiores de 18 anos.</p>
+            <p>© Gabi Costa VIP. Conteúdo privado para maiores de 18 anos.</p>
+            <p>Fatura discreta no seu banco.</p>
         </footer>
 
     </main>
@@ -178,9 +195,9 @@
             const pixArea = document.getElementById('pix-display-area');
             pixArea.innerHTML = `
                 <div class="space-y-3 py-2">
-                    <p class="text-sm font-bold text-emerald-400">PAGAMENTO CONFIRMADO! 🎉</p>
-                    <a href="${downloadUrl}" target="_blank" class="block w-full bg-emerald-500 text-black font-extrabold py-3.5 rounded-xl text-xs uppercase text-center shadow-lg">
-                        📥 ABRIR CONTEÚDO AGORA
+                    <p class="text-sm font-black text-emerald-400">PAGAMENTO CONFIRMADO! 🎉</p>
+                    <a href="${downloadUrl}" target="_blank" class="block w-full bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold py-3.5 rounded-xl text-xs uppercase text-center shadow-lg transition">
+                        📥 BAIXAR E ABRIR CONTEÚDO AGORA
                     </a>
                 </div>
             `;
@@ -198,7 +215,7 @@
             const text = document.getElementById('blur-level-text');
             let blurValue = 20 - (value * 0.2);
             image.style.filter = `blur(${blurValue}px)`;
-            text.innerText = `${value}%`;
+            text.innerText = `${value}% Revelado`;
         }
     </script>
 </body>
