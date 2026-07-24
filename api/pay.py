@@ -7,7 +7,6 @@ app = Flask(__name__)
 
 PACKS = {
     "promo": {"price": 19.90, "name": "Sessão Promo Exclusiva 🎁"},
-    "promo_metade": {"price": 9.90, "name": "Sessão Promo Metade 🌓"}
 }
 
 NEXUSPAG_API_KEY = os.getenv("NEXUSPAG_API_KEY")
